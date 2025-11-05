@@ -18,9 +18,7 @@ There are 2 AWS Lambda functions.
 
 * To perform testing against your deployed function use the Test Invoke tab in the opened Function View window.
 
-### Here are a few things that have to be done through the Amazon console after the Lambdas have been deployed.
-
-* Deploy both the Lambdas. 
+### Here are a few things that have to be done through the Amazon console after the Lambdas have been deployed:
 
 * Create an API through the API Gateway for a Post method. Setup the trigger to SQSPublisher Lambda
 
