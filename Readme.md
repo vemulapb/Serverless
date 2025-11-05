@@ -19,12 +19,17 @@ There are 2 AWS Lambda functions.
 * To perform testing against your deployed function use the Test Invoke tab in the opened Function View window.
 
 ### Here are a few things that have to be done through the Amazon console after the Lambdas have been deployed.
+
 * Deploy both the Lambdas. 
 
 * Create an API through the API Gateway for a Post method. Setup the trigger to SQSPublisher Lambda
+
 * Create a SQS Queue called ProductQueue. Setup the trigger to SQSConsumer Lambda
+
 * Creata DynamoDB table called ProductCatalog
+
 * Through IAM create a policy called lambda-custom-policy and grant Read, Write access to SQSQueues and DynamoDB
+
 * Create a role lambda-apigateway-role and attach the above policy to this role.
 
 
