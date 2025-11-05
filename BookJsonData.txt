@@ -1,20 +1,20 @@
 [
   {
-    "Id": "book-001",
+    "Id": " ",
     "Title": "The Great Gatsby",
     "Price": 15,
     "ISBN": "978-0743273565",
     "Authors": ["F. Scott Fitzgerald"]
   },
   {
-    "Id": "book-002",
+    "Id": " ",
     "Title": "The Hitchhiker's Guide to the Galaxy",
     "Price": 12,
     "ISBN": "978-0345391803",
     "Authors": ["Douglas Adams"]
   },
   {
-    "Id": "book-003",
+    "Id": " ",
     "Title": "Sapiens: A Brief History of Humankind",
     "Price": 25,
     "ISBN": "978-0062316097",
