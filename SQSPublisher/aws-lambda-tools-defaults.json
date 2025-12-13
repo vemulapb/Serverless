@@ -20,7 +20,7 @@
   "function-subnets": "",
   "function-security-groups": "",
   "tracing-mode": "PassThrough",
-  "environment-variables": "",
+  "environment-variables": "\u0022SQS_QUEUE_URL\u0022=\u0022https://sqs.ca-central-1.amazonaws.com/122194242063/ProductQueue\u0022",
   "image-tag": "",
   "function-description": ""
 }

@@ -10,16 +10,28 @@ namespace SQSPublisher;
 
 public class Function
 {
-    private static readonly string queueUrl = "https://sqs.ca-central-1.amazonaws.com/122194242063/ProductQueue";
+    private static readonly string queueUrl = Environment.GetEnvironmentVariable("SQS_QUEUE_URL") 
+        ?? throw new InvalidOperationException("SQS_QUEUE_URL environment variable is not set");
+    private static readonly IAmazonSQS sqsClient = new AmazonSQSClient();
     
     public async Task<string> FunctionHandler(Book book, ILambdaContext context)
     {
-        var sqsClient = new AmazonSQSClient();
-
-        string jsonMessage = JsonSerializer.Serialize(book);
-
-        return await SendMessage(sqsClient, queueUrl, jsonMessage);     
-     
+        if (book == null)
+            throw new ArgumentNullException(nameof(book));
+            
+        if (string.IsNullOrWhiteSpace(book.Id))
+            throw new ArgumentException("Book.Id is required");
+        
+        try
+        {
+            string jsonMessage = JsonSerializer.Serialize(book);
+            return await SendMessage(sqsClient, queueUrl, jsonMessage);
+        }
+        catch (Exception ex)
+        {
+            context.Logger.LogLine($"Error publishing message: {ex.Message}");
+            throw;
+        }
     }
 
     private static async Task<string> SendMessage(
